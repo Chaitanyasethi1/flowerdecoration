@@ -1,88 +1,90 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { X, Sparkles, Tag, Clock, PhoneCall } from "lucide-react";
+import { Sparkles, Tag, Clock, PhoneCall } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { useAdmin } from "@/context/AdminContext";
 
 export const AnnouncementBar: React.FC = () => {
-  const [dismissed, setDismissed] = useState(false);
   const { announcementText } = useAdmin();
 
-  if (dismissed || !siteConfig.announcement.enabled) return null;
+  if (!siteConfig.announcement.enabled) return null;
 
   const messages = [
     {
-      icon: <Sparkles className="w-3.5 h-3.5 text-amber-300" />,
+      badge: "🔥 DIWALI SPECIAL",
       text: announcementText || siteConfig.announcement.text,
       linkText: "Claim 10% Off",
       href: "/offers",
+      badgeClass: "bg-amber-400 text-stone-900",
     },
     {
-      icon: <Clock className="w-3.5 h-3.5 text-rose-300" />,
-      text: "⚡ Same-Day Decoration Setup available across Delhi, Gurgaon, Noida & Faridabad (Book before 4 PM)",
+      badge: "⚡ SAME-DAY SETUP",
+      text: "Delhi NCR Same-Day Decoration Delivery across Delhi, Noida, Gurgaon & Ghaziabad (Order before 4 PM)",
       linkText: "Book Today",
       href: "/decorations/all",
+      badgeClass: "bg-white text-rose-800",
     },
     {
-      icon: <Tag className="w-3.5 h-3.5 text-emerald-300" />,
-      text: "🎉 Flat ₹500 OFF on Orders above ₹2,999 — Use Code: WELCOME500",
+      badge: "🎉 FLAT ₹500 OFF",
+      text: "Use Promo Code: WELCOME500 on all floral bookings above ₹2,999",
       linkText: "Apply Code",
       href: "/offers",
+      badgeClass: "bg-emerald-400 text-stone-900",
     },
     {
-      icon: <PhoneCall className="w-3.5 h-3.5 text-amber-300" />,
-      text: `💐 Direct Florist WhatsApp Hotline: +91 ${siteConfig.phone} · Instant Booking Support`,
-      linkText: "Chat Now",
-      href: `https://wa.me/${siteConfig.whatsapp}?text=Hi%20Bloomora,%20I%20need%20flower%20decoration`,
+      badge: "💐 24/7 HELPLINE",
+      text: `Direct Florist WhatsApp Support: +91 ${siteConfig.phone} · Custom Themes & Stage Quotes`,
+      linkText: "WhatsApp Now",
+      href: `https://wa.me/${siteConfig.whatsapp}?text=Hi%20Bloomora%20Decor,%20I%20want%20to%20book%20flower%20decoration`,
+      badgeClass: "bg-emerald-300 text-emerald-950",
     },
   ];
 
   return (
-    <div className="relative bg-gradient-to-r from-rose-950 via-rose-900 to-stone-950 text-rose-50 text-xs sm:text-sm py-2 overflow-hidden z-50 border-b border-rose-800/40 select-none">
+    <div className="bg-gradient-to-r from-rose-800 via-rose-700 to-rose-800 text-white text-xs sm:text-sm py-2 overflow-hidden shadow-inner border-b border-rose-900/30 select-none">
       {/* Infinite Marquee Strip */}
       <div className="overflow-hidden flex items-center">
-        <div className="animate-marquee flex items-center gap-10 whitespace-nowrap">
+        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap">
           {/* First set */}
           {messages.map((item, idx) => (
-            <div key={`msg-1-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-4">
-              {item.icon}
-              <span className="tracking-wide">{item.text}</span>
+            <div key={`ticker-1-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-2">
+              <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs ${item.badgeClass}`}>
+                {item.badge}
+              </span>
+              <span className="text-rose-50 font-semibold tracking-wide text-xs sm:text-[13px]">
+                {item.text}
+              </span>
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 hover:bg-amber-400 hover:text-stone-900 font-semibold text-[11px] transition-colors border border-amber-400/30 ml-1"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-rose-700 font-bold text-[11px] transition-all border border-white/30 ml-1"
               >
-                {item.linkText} →
+                <span>{item.linkText}</span>
+                <span>→</span>
               </Link>
             </div>
           ))}
 
-          {/* Duplicate set for seamless continuous infinite rotation */}
+          {/* Duplicate set for seamless continuous infinite rotation ("gol gol ghumta rhe na") */}
           {messages.map((item, idx) => (
-            <div key={`msg-2-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-4">
-              {item.icon}
-              <span className="tracking-wide">{item.text}</span>
+            <div key={`ticker-2-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-2">
+              <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs ${item.badgeClass}`}>
+                {item.badge}
+              </span>
+              <span className="text-rose-50 font-semibold tracking-wide text-xs sm:text-[13px]">
+                {item.text}
+              </span>
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 hover:bg-amber-400 hover:text-stone-900 font-semibold text-[11px] transition-colors border border-amber-400/30 ml-1"
+                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-rose-700 font-bold text-[11px] transition-all border border-white/30 ml-1"
               >
-                {item.linkText} →
+                <span>{item.linkText}</span>
+                <span>→</span>
               </Link>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Dismiss Button */}
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 pl-6 bg-gradient-to-l from-rose-950 via-rose-950/90 to-transparent flex items-center">
-        <button
-          onClick={() => setDismissed(true)}
-          className="text-rose-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition-colors"
-          aria-label="Dismiss announcement"
-        >
-          <X className="w-3.5 h-3.5" />
-        </button>
       </div>
     </div>
   );

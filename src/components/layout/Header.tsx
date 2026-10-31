@@ -21,6 +21,8 @@ import { CitySelector } from "./CitySelector";
 import { MegaMenu } from "./MegaMenu";
 import { occasionsData } from "@/data/occasions";
 
+import { AnnouncementBar } from "./AnnouncementBar";
+
 export const Header: React.FC = () => {
   const router = useRouter();
   const { itemsCount, wishlist, setIsCartOpen } = useCart();
@@ -39,9 +41,12 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-rose-100/80 shadow-xs transition-all">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-rose-100/80 shadow-xs transition-all">
+      {/* Top Infinite Running Marquee Ticker */}
+      <AnnouncementBar />
+
       {/* Main Bar */}
-      <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <div className="container mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between gap-4">
         {/* Left: Mobile hamburger + Logo + City */}
         <div className="flex items-center gap-3">
           <button

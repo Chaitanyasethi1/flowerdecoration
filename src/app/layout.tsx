@@ -6,7 +6,6 @@ import { CityProvider } from "@/context/CityContext";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { AdminProvider } from "@/context/AdminContext";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
@@ -131,7 +130,6 @@ export default function RootLayout({
           <AuthProvider>
             <AdminProvider>
               <CartProvider>
-                <AnnouncementBar />
                 <Header />
                 <main className="flex-1">{children}</main>
                 <Footer />
