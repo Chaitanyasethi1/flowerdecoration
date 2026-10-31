@@ -11,46 +11,28 @@ import {
   ShieldCheck,
   Clock,
   Star,
-  MapPin,
   ChevronLeft,
   ChevronRight,
-  ArrowRight,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { occasionsData } from "@/data/occasions";
 
 const heroSlides = [
   {
-    title: "Blush Rose Ring Backdrop",
-    tagline: "Trending in Gurgaon & South Delhi",
-    price: 3499,
-    originalPrice: 4999,
-    slug: "blush-rose-ring-backdrop",
-    image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1200&q=85",
+    title: "Luxury Blush Rose Ring Backdrop",
+    image: "/images/hero/hero_pink_rose_ring.jpg",
   },
   {
-    title: "Royal Marigold Haldi Jhoola",
-    tagline: "Wedding Hit across Noida & Delhi",
-    price: 4499,
-    originalPrice: 5999,
-    slug: "marigold-haldi-jhoola-setup",
-    image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+    title: "Royal Wedding Grand Floral Stage",
+    image: "/images/hero/hero_wedding_stage.jpg",
   },
   {
-    title: "Fairy Canopy Romantic Cabana",
-    tagline: "Terrace Special in Ghaziabad & CP",
-    price: 3999,
-    originalPrice: 5499,
-    slug: "fairy-light-canopy-cabana",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+    title: "Romantic Twilight Terrace Cabana",
+    image: "/images/hero/hero_romantic_cabana.jpg",
   },
   {
-    title: "Pastel Teddy & Cloud Baby Shower",
-    tagline: "Trending in West Delhi & Gurgaon",
-    price: 3899,
-    originalPrice: 4999,
-    slug: "pastel-teddy-cloud-baby-shower",
-    image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=85",
+    title: "Pastel Pink Grand Celebration Arch",
+    image: "/images/hero/hero_baby_shower_arch.jpg",
   },
 ];
 
@@ -198,114 +180,55 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Hero Visual Showcase (Auto-Rotating Pink & White Showcase) */}
+          {/* Right Column: Hero Visual Showcase (Pure Clean Image Slider - No text over image) */}
           <div
-            className="lg:col-span-5 relative mt-2 sm:mt-0"
+            className="lg:col-span-5 relative mt-4 lg:mt-0"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Main arched photo slider */}
-              <div className="relative h-[320px] sm:h-[450px] w-full rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white bg-pink-50 group">
+            <div className="relative mx-auto max-w-lg lg:max-w-none">
+              {/* Main Photo Slider */}
+              <div className="relative h-[360px] sm:h-[480px] lg:h-[520px] w-full rounded-3xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-pink-500/15 border-4 border-white bg-pink-50 group">
                 <Image
-                  key={activeSlide.slug}
+                  key={activeSlide.image}
                   src={activeSlide.image}
                   alt={activeSlide.title}
                   fill
                   priority
-                  className="object-cover transition-all duration-700 group-hover:scale-105 animate-in fade-in"
+                  className="object-cover transition-all duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
 
                 {/* Left & Right Chevrons */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center backdrop-blur-md border border-pink-100 shadow-md transition-all active:scale-95 z-20"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center backdrop-blur-md border border-pink-100 shadow-lg transition-all active:scale-95 z-20 hover:scale-110"
                   aria-label="Previous decoration"
                 >
-                  <ChevronLeft className="w-4 h-4 text-pink-600" />
+                  <ChevronLeft className="w-5 h-5 text-pink-600" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center backdrop-blur-md border border-pink-100 shadow-md transition-all active:scale-95 z-20"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/90 hover:bg-white text-stone-800 flex items-center justify-center backdrop-blur-md border border-pink-100 shadow-lg transition-all active:scale-95 z-20 hover:scale-110"
                   aria-label="Next decoration"
                 >
-                  <ChevronRight className="w-4 h-4 text-pink-600" />
+                  <ChevronRight className="w-5 h-5 text-pink-600" />
                 </button>
 
-                {/* Floating caption on hero (White & Pink Frosted Glass) */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-pink-100 shadow-xl z-10">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="min-w-0">
-                      <p className="text-[10px] sm:text-[11px] uppercase font-bold text-pink-600 tracking-wider truncate">
-                        {activeSlide.tagline}
-                      </p>
-                      <h3 className="font-serif text-sm sm:text-base font-bold text-stone-900 truncate">
-                        {activeSlide.title}
-                      </h3>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <span className="text-[10px] sm:text-[11px] text-stone-400 line-through">
-                        ₹{activeSlide.originalPrice.toLocaleString()}
-                      </span>
-                      <p className="text-sm sm:text-lg font-extrabold text-pink-600">
-                        ₹{activeSlide.price.toLocaleString()}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-2.5 pt-2 border-t border-pink-100 flex items-center justify-between">
-                    <Link
-                      href={`/decoration/${activeSlide.slug}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-pink-600 hover:text-pink-700 transition-colors"
-                    >
-                      <span>Book this setup</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-
-                    {/* Indicator dots */}
-                    <div className="flex items-center gap-1">
-                      {heroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentSlide(idx)}
-                          className={`h-1.5 rounded-full transition-all ${
-                            currentSlide === idx
-                              ? "w-5 bg-pink-600"
-                              : "w-1.5 bg-pink-200 hover:bg-pink-400"
-                          }`}
-                          aria-label={`Slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                {/* Sleek floating indicator dots - Zero text written over image */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 z-20">
+                  {heroSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-2 rounded-full transition-all ${
+                        currentSlide === idx
+                          ? "w-6 bg-pink-500 shadow-sm shadow-pink-500/50"
+                          : "w-2 bg-white/70 hover:bg-white"
+                      }`}
+                      aria-label={`Slide ${idx + 1}`}
+                    />
+                  ))}
                 </div>
-              </div>
-
-              {/* Floating review card */}
-              <div className="hidden sm:flex absolute -bottom-5 -left-4 sm:-left-6 bg-white rounded-2xl p-3 shadow-xl border border-pink-100 items-center gap-3 animate-float max-w-xs z-20">
-                <div className="w-9 h-9 rounded-full bg-pink-50 border border-pink-100 flex items-center justify-center text-base shrink-0">
-                  💐
-                </div>
-                <div>
-                  <div className="flex items-center gap-1 text-amber-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-amber-400" />
-                    ))}
-                    <span className="text-[11px] font-bold text-stone-800 ml-1">
-                      4.9 / 5.0
-                    </span>
-                  </div>
-                  <p className="text-xs font-semibold text-stone-800">
-                    &ldquo;Best decor team in Delhi!&rdquo;
-                  </p>
-                  <p className="text-[10px] text-stone-400">Priya S., DLF Phase 5</p>
-                </div>
-              </div>
-
-              {/* Floating city badge */}
-              <div className="absolute top-3 -right-2 sm:-right-4 bg-white/95 backdrop-blur-md rounded-2xl px-3 py-1.5 shadow-md border border-pink-100 flex items-center gap-1.5 z-20">
-                <MapPin className="w-3.5 h-3.5 text-pink-600" />
-                <span className="text-[11px] sm:text-xs font-bold text-stone-800">Delhi NCR Hubs</span>
               </div>
             </div>
           </div>
