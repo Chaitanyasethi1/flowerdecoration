@@ -46,26 +46,32 @@ export const Header: React.FC = () => {
       <AnnouncementBar />
 
       {/* Main Bar */}
-      <div className="container mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between gap-4">
+      <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Mobile hamburger + Logo + City */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="lg:hidden p-2 text-stone-700 hover:text-rose-600 rounded-xl hover:bg-rose-50 transition-colors"
+            className="lg:hidden p-1.5 text-stone-700 hover:text-pink-600 rounded-xl hover:bg-pink-50 transition-colors"
             aria-label="Open menu"
           >
             <Menu className="w-5 h-5" />
           </button>
 
           <Link href="/" className="flex items-center gap-1 group">
-            <span className="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-900 group-hover:text-rose-700 transition-colors">
+            <span className="font-serif text-xl sm:text-3xl font-extrabold tracking-tight text-stone-900 group-hover:text-pink-600 transition-colors">
               Bloomora
             </span>
-            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 group-hover:scale-125 transition-transform" />
+            <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-pink-500 group-hover:scale-125 transition-transform" />
           </Link>
 
+          {/* Desktop City Selector */}
           <div className="hidden sm:block ml-2">
             <CitySelector />
+          </div>
+
+          {/* Mobile Compact City Selector */}
+          <div className="sm:hidden ml-1">
+            <CitySelector compact />
           </div>
         </div>
 
@@ -134,13 +140,13 @@ export const Header: React.FC = () => {
           {/* Cart Icon with badge */}
           <button
             onClick={() => setIsCartOpen(true)}
-            className="relative flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs sm:text-sm shadow-sm hover:shadow transition-all"
+            className="relative flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 text-white font-bold text-xs sm:text-sm shadow-md shadow-pink-500/20 hover:shadow-lg transition-all"
             aria-label="Shopping Cart"
           >
             <ShoppingBag className="w-4 h-4" />
             <span className="hidden sm:inline">Cart</span>
             {itemsCount > 0 && (
-              <span className="w-5 h-5 bg-white text-rose-700 rounded-full text-xs font-extrabold flex items-center justify-center shadow-xs">
+              <span className="w-5 h-5 bg-white text-pink-700 rounded-full text-xs font-black flex items-center justify-center shadow-xs">
                 {itemsCount}
               </span>
             )}
@@ -150,17 +156,17 @@ export const Header: React.FC = () => {
 
       {/* Mobile search drop */}
       {isSearchOpen && (
-        <div className="md:hidden px-4 pb-3 pt-1 border-t border-rose-50 bg-stone-50/90 animate-in fade-in">
+        <div className="md:hidden px-4 pb-3 pt-1 border-t border-pink-100 bg-pink-50/50 animate-in fade-in">
           <form onSubmit={handleSearchSubmit} className="relative w-full">
             <input
               type="text"
               placeholder="Search decorations (e.g. Ring, Haldi, Proposal)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-white border border-stone-200 rounded-full focus:outline-none focus:ring-2 focus:ring-rose-500 text-stone-800"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-white border border-pink-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500 text-stone-800"
               autoFocus
             />
-            <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-pink-400 absolute left-3 top-1/2 -translate-y-1/2" />
           </form>
         </div>
       )}
@@ -232,7 +238,7 @@ export const Header: React.FC = () => {
           />
           <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-white shadow-2xl flex flex-col z-50">
             {/* Drawer Header */}
-            <div className="p-4 border-b border-rose-100 flex items-center justify-between bg-rose-50/50">
+            <div className="p-4 border-b border-pink-100 flex items-center justify-between bg-pink-50/60">
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
@@ -241,19 +247,19 @@ export const Header: React.FC = () => {
                 <span className="font-serif text-2xl font-bold text-stone-900">
                   Bloomora
                 </span>
-                <span className="w-2 h-2 rounded-full bg-rose-500" />
+                <span className="w-2 h-2 rounded-full bg-pink-500" />
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1 rounded-full text-stone-500 hover:text-stone-900"
+                className="p-1 rounded-full text-stone-500 hover:text-pink-600"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* City Selector in mobile */}
-            <div className="p-4 border-b border-rose-100 bg-stone-50/50 flex items-center justify-between">
-              <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+            <div className="p-4 border-b border-pink-100 bg-white flex items-center justify-between">
+              <span className="text-xs font-bold text-pink-700 uppercase tracking-wider">
                 Current City
               </span>
               <CitySelector />
@@ -271,7 +277,7 @@ export const Header: React.FC = () => {
                       key={occ.id}
                       href={`/decorations/${occ.slug}`}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center gap-2 p-2 rounded-xl bg-stone-50 hover:bg-rose-50 text-xs font-medium text-stone-800 transition-colors"
+                      className="flex items-center gap-2 p-2 rounded-xl bg-pink-50/40 hover:bg-pink-100/70 text-xs font-bold text-stone-800 transition-colors border border-pink-100/50"
                     >
                       <span className="text-lg">{occ.emoji}</span>
                       <span className="truncate">{occ.name}</span>
@@ -280,70 +286,70 @@ export const Header: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-rose-100 space-y-1">
+              <div className="pt-2 border-t border-pink-100 space-y-1">
                 <p className="text-xs font-bold text-stone-400 uppercase tracking-wider mb-2">
                   Quick Links
                 </p>
                 <Link
                   href="/decorations/all"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-semibold text-rose-600 rounded-lg hover:bg-rose-50"
+                  className="block px-3 py-2 text-sm font-bold text-pink-600 rounded-lg hover:bg-pink-50"
                 >
                   Browse All 40+ Designs →
                 </Link>
                 <Link
                   href="/custom-quote"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   Request Custom Quote
                 </Link>
                 <Link
                   href="/offers"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   Special Offers & Codes
                 </Link>
                 <Link
                   href="/gallery"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   Recent Celebrations Gallery
                 </Link>
                 <Link
                   href="/corporate"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   Corporate Events & Launches
                 </Link>
                 <Link
                   href="/account"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   My Account & Orders
                 </Link>
                 <Link
                   href="/about"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   About Bloomora
                 </Link>
                 <Link
                   href="/contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-sm font-medium text-stone-700 rounded-lg hover:bg-pink-50"
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-xs font-medium text-stone-400 rounded-lg hover:bg-stone-50"
+                  className="block px-3 py-2 text-xs font-medium text-stone-400 rounded-lg hover:bg-pink-50"
                 >
                   Admin Portal
                 </Link>
@@ -351,12 +357,12 @@ export const Header: React.FC = () => {
             </div>
 
             {/* Mobile Drawer Footer with Contact */}
-            <div className="p-4 bg-stone-50 border-t border-rose-100 space-y-2">
+            <div className="p-4 bg-pink-50/40 border-t border-pink-100 space-y-2">
               <a
                 href={`tel:${siteConfig.phone}`}
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-stone-900 text-white text-xs font-semibold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-rose-500 text-white text-xs font-bold shadow-md shadow-pink-500/20"
               >
-                <Phone className="w-4 h-4 text-rose-400" />
+                <Phone className="w-4 h-4 text-white" />
                 <span>Call {siteConfig.phoneDisplay}</span>
               </a>
               <a
@@ -365,7 +371,7 @@ export const Header: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-semibold"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold shadow-md"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Instant Help</span>

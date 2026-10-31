@@ -30,29 +30,29 @@ export const FaqAccordion: React.FC = () => {
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-3">
+        <div className="space-y-2.5 sm:space-y-3">
           {faqsData.map((faq) => {
             const isOpen = openId === faq.id;
             return (
               <div
                 key={faq.id}
-                className="rounded-2xl border border-stone-200/80 bg-stone-50/50 overflow-hidden transition-all duration-200"
+                className="rounded-2xl border border-pink-100/90 bg-white overflow-hidden transition-all duration-200 shadow-2xs hover:border-pink-200"
               >
                 <button
                   onClick={() => toggle(faq.id)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-stone-900 hover:text-rose-600 transition-colors"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-stone-900 hover:text-pink-600 transition-colors"
                 >
-                  <span className="text-sm sm:text-base">{faq.question}</span>
+                  <span className="text-xs sm:text-base">{faq.question}</span>
                   <div
-                    className={`w-7 h-7 rounded-full bg-white shadow-2xs flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 bg-rose-50 text-rose-600" : "text-stone-500"
+                    className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-pink-50 flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                      isOpen ? "rotate-180 bg-pink-600 text-white" : "text-pink-600"
                     }`}
                   >
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-200/50 bg-white">
+                  <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-pink-100/60 bg-pink-50/20">
                     {faq.answer}
                   </div>
                 )}

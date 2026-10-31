@@ -43,22 +43,22 @@ export const AnnouncementBar: React.FC = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r from-rose-800 via-rose-700 to-rose-800 text-white text-xs sm:text-sm py-2 overflow-hidden shadow-inner border-b border-rose-900/30 select-none">
+    <div className="bg-gradient-to-r from-pink-600 via-rose-500 to-pink-600 text-white text-[11px] sm:text-xs py-1.5 sm:py-2 overflow-hidden shadow-xs border-b border-pink-400/30 select-none">
       {/* Infinite Marquee Strip */}
       <div className="overflow-hidden flex items-center">
-        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap">
+        <div className="animate-marquee flex items-center gap-6 sm:gap-10 whitespace-nowrap">
           {/* First set */}
           {messages.map((item, idx) => (
-            <div key={`ticker-1-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-2">
-              <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs ${item.badgeClass}`}>
+            <div key={`ticker-1-${idx}`} className="inline-flex items-center gap-2 font-medium px-2">
+              <span className="text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider bg-white text-pink-600 shadow-xs">
                 {item.badge}
               </span>
-              <span className="text-rose-50 font-semibold tracking-wide text-xs sm:text-[13px]">
+              <span className="text-white font-semibold tracking-wide">
                 {item.text}
               </span>
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-rose-700 font-bold text-[11px] transition-all border border-white/30 ml-1"
+                className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-pink-700/60 hover:bg-white text-white hover:text-pink-600 font-bold text-[10px] sm:text-[11px] transition-all border border-white/40 ml-1"
               >
                 <span>{item.linkText}</span>
                 <span>→</span>
@@ -68,16 +68,16 @@ export const AnnouncementBar: React.FC = () => {
 
           {/* Duplicate set for seamless continuous infinite rotation ("gol gol ghumta rhe na") */}
           {messages.map((item, idx) => (
-            <div key={`ticker-2-${idx}`} className="inline-flex items-center gap-2.5 font-medium px-2">
-              <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs ${item.badgeClass}`}>
+            <div key={`ticker-2-${idx}`} className="inline-flex items-center gap-2 font-medium px-2">
+              <span className="text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider bg-white text-pink-600 shadow-xs">
                 {item.badge}
               </span>
-              <span className="text-rose-50 font-semibold tracking-wide text-xs sm:text-[13px]">
+              <span className="text-white font-semibold tracking-wide">
                 {item.text}
               </span>
               <Link
                 href={item.href}
-                className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/20 hover:bg-white text-white hover:text-rose-700 font-bold text-[11px] transition-all border border-white/30 ml-1"
+                className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-pink-700/60 hover:bg-white text-white hover:text-pink-600 font-bold text-[10px] sm:text-[11px] transition-all border border-white/40 ml-1"
               >
                 <span>{item.linkText}</span>
                 <span>→</span>

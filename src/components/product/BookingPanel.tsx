@@ -489,14 +489,14 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         </div>
 
         {/* 30% Advance breakdown */}
-        <div className="mt-2 pt-2 border-t border-rose-200/70 grid grid-cols-2 gap-2 text-center">
-          <div className="p-2 bg-rose-600 text-white rounded-xl">
-            <span className="text-[10px] block opacity-90">Pay Now ({advancePaymentPercent}%)</span>
-            <span className="font-bold text-sm">₹{advanceAmount.toLocaleString()}</span>
+        <div className="mt-2 pt-2 border-t border-pink-200/70 grid grid-cols-2 gap-2 text-center">
+          <div className="p-2.5 bg-gradient-to-r from-pink-600 to-rose-500 text-white rounded-xl shadow-xs">
+            <span className="text-[10px] block opacity-90 font-semibold">Pay Now ({advancePaymentPercent}%)</span>
+            <span className="font-extrabold text-sm sm:text-base">₹{advanceAmount.toLocaleString()}</span>
           </div>
-          <div className="p-2 bg-white text-stone-800 border border-rose-200 rounded-xl">
-            <span className="text-[10px] block text-stone-500">Pay on Delivery</span>
-            <span className="font-bold text-sm">₹{balanceAmount.toLocaleString()}</span>
+          <div className="p-2.5 bg-white text-stone-800 border border-pink-200 rounded-xl">
+            <span className="text-[10px] block text-stone-500 font-medium">Pay on Delivery</span>
+            <span className="font-extrabold text-sm sm:text-base">₹{balanceAmount.toLocaleString()}</span>
           </div>
         </div>
       </div>
@@ -506,7 +506,7 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         <button
           onClick={() => handleBooking(true)}
           disabled={isDateBlocked}
-          className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-rose-600 hover:bg-rose-700 disabled:bg-stone-300 text-white font-bold text-sm shadow-md hover:shadow-xl transition-all"
+          className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pink-600 to-rose-500 hover:from-pink-700 hover:to-rose-600 disabled:bg-stone-300 text-white font-black text-sm shadow-lg shadow-pink-500/25 hover:shadow-xl active:scale-98 transition-all"
         >
           <Sparkles className="w-4 h-4 text-amber-300" />
           <span>Book Now (Pay ₹{advanceAmount.toLocaleString()} Advance)</span>
@@ -515,9 +515,9 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         <button
           onClick={() => handleBooking(false)}
           disabled={isDateBlocked}
-          className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-white hover:bg-stone-50 border border-stone-300 text-stone-800 font-bold text-xs transition-colors"
+          className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-2xl bg-white hover:bg-pink-50/50 border border-pink-200 text-stone-800 font-bold text-xs transition-colors"
         >
-          <ShoppingBag className="w-4 h-4 text-stone-600" />
+          <ShoppingBag className="w-4 h-4 text-pink-600" />
           <span>Add to Cart</span>
         </button>
 

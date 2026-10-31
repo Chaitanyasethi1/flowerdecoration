@@ -37,25 +37,25 @@ export const StatsCounter: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 bg-rose-50/60 border-y border-rose-100/70">
+    <section className="py-10 sm:py-14 bg-gradient-to-b from-pink-50/70 via-white to-pink-50/50 border-y border-pink-100/80">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
-              <div key={idx} className="p-4 space-y-1">
-                <div className="flex justify-center mb-2">
-                  <div className="w-10 h-10 rounded-full bg-white shadow-xs flex items-center justify-center">
-                    <Icon className={`w-5 h-5 ${stat.color}`} />
+              <div key={idx} className="p-3 sm:p-5 rounded-2xl bg-white/80 border border-pink-100/70 shadow-xs space-y-1">
+                <div className="flex justify-center mb-1.5 sm:mb-2">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-pink-50 border border-pink-200/60 shadow-xs flex items-center justify-center">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-pink-600" />
                   </div>
                 </div>
-                <div className="font-serif text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+                <div className="font-serif text-2xl sm:text-4xl font-black text-stone-900 tracking-tight">
                   {stat.value}
                 </div>
-                <div className="font-semibold text-xs sm:text-sm text-stone-800">
+                <div className="font-bold text-xs sm:text-sm text-stone-800">
                   {stat.label}
                 </div>
-                <div className="text-[11px] text-stone-500">
+                <div className="text-[10px] sm:text-[11px] text-stone-500">
                   {stat.subtext}
                 </div>
               </div>

@@ -51,41 +51,43 @@ export const WhyBloomora: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 sm:py-20 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold uppercase tracking-wider">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14 space-y-2 sm:space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-pink-50 border border-pink-200/60 text-pink-700 text-xs font-bold uppercase tracking-wider">
             <span>🌸 The Bloomora Promise</span>
           </div>
           <h2 className="font-serif text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
             Why Delhi NCR Chooses Bloomora
           </h2>
-          <p className="text-sm sm:text-base text-stone-600">
+          <p className="text-xs sm:text-base text-stone-600">
             We don&apos;t just deliver flowers; we transform spaces into enchanting memories with uncompromised craftsmanship.
           </p>
         </div>
 
-        {/* 6 Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 6 Features Grid - 2 columns on mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {perks.map((perk, idx) => {
             const Icon = perk.icon;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-3xl bg-stone-50/70 border border-stone-200/60 hover:bg-white hover:border-rose-200 hover:shadow-xl transition-all duration-300 group"
+                className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-pink-50/30 border border-pink-100/90 hover:bg-white hover:border-pink-300 hover:shadow-xl hover:shadow-pink-500/10 transition-all duration-300 group flex flex-col justify-between"
               >
-                <div
-                  className={`w-12 h-12 rounded-2xl flex items-center justify-center border mb-5 transition-transform group-hover:scale-110 ${perk.color}`}
-                >
-                  <Icon className="w-6 h-6" />
+                <div>
+                  <div
+                    className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center border border-pink-200/60 bg-white text-pink-600 mb-3 sm:mb-5 transition-transform group-hover:scale-110 shadow-xs"
+                  >
+                    <Icon className="w-4 h-4 sm:w-6 sm:h-6" />
+                  </div>
+                  <h3 className="font-serif font-bold text-xs sm:text-lg text-stone-900 mb-1 sm:mb-2 group-hover:text-pink-600 transition-colors">
+                    {perk.title}
+                  </h3>
+                  <p className="text-[10px] sm:text-sm text-stone-600 leading-snug">
+                    {perk.description}
+                  </p>
                 </div>
-                <h3 className="font-serif font-bold text-lg text-stone-900 mb-2">
-                  {perk.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  {perk.description}
-                </p>
               </div>
             );
           })}
