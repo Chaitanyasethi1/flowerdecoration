@@ -11,6 +11,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
+import { CurtainEntrance } from "@/components/common/CurtainEntrance";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -130,6 +131,7 @@ export default function RootLayout({
           <AuthProvider>
             <AdminProvider>
               <CartProvider>
+                <CurtainEntrance />
                 <Header />
                 <main className="flex-1">{children}</main>
                 <Footer />
