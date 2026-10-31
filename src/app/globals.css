@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 99%; /* creamy off-white */
+    --foreground: 345 35% 15%; /* rich deep floral plum-brown */
+    --card: 0 0% 100%;
+    --card-foreground: 345 35% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 35% 15%;
+    --primary: 353 79% 63%; /* signature rose #eb5667 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 45% 95%; /* soft warm cream */
+    --secondary-foreground: 345 40% 20%;
+    --muted: 40 25% 94%;
+    --muted-foreground: 345 10% 45%;
+    --accent: 44 65% 92%; /* gold tint */
+    --accent-foreground: 35 60% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 350 20% 90%;
+    --input: 350 20% 90%;
+    --ring: 353 79% 63%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-rose-100 selection:text-rose-900;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-stone-900;
+  }
+}
+
+/* Glassmorphism & custom utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px -2px rgba(235, 86, 103, 0.06);
+}
+
+.floral-gradient {
+  background: linear-gradient(135deg, #fff5f5 0%, #fffbf0 50%, #fde8e9 100%);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #c89f2a 0%, #dcba47 50%, #ad7f20 100%);
+}
+
+.rose-gradient {
+  background: linear-gradient(135deg, #eb5667 0%, #d73549 100%);
+}
+
+/* Custom hide-scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Infinite Marquee animations ("gol gol ghumta rhe na") */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-fast:hover,
+.animate-marquee-reverse:hover,
+.pause-on-hover:hover .animate-marquee,
+.pause-on-hover:hover .animate-marquee-slow {
+  animation-play-state: paused;
+}
+
