@@ -50,6 +50,7 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
   // Live countdown to cutoff time (4:00 PM IST)
   const [isSameDayAllowed, setIsSameDayAllowed] = useState<boolean>(true);
   const [cutoffCountdown, setCutoffCountdown] = useState<string>("");
+  const [minDateStr, setMinDateStr] = useState<string>("");
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -63,9 +64,13 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
       const istSeconds = istTime.getSeconds();
 
       const todayStr = istTime.toISOString().split("T")[0];
+      const tomorrow = new Date(istTime);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowStr = tomorrow.toISOString().split("T")[0];
 
       if (istHours < sameDayCutoffHour) {
         setIsSameDayAllowed(true);
+        setMinDateStr(todayStr);
         const remainingHours = sameDayCutoffHour - 1 - istHours;
         const remainingMinutes = 59 - istMinutes;
         const remainingSeconds = 59 - istSeconds;
@@ -74,6 +79,7 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         );
       } else {
         setIsSameDayAllowed(false);
+        setMinDateStr(tomorrowStr);
         setCutoffCountdown("");
       }
 
@@ -82,10 +88,7 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         if (istHours < sameDayCutoffHour) {
           setSelectedDate(todayStr);
         } else {
-          // Tomorrow
-          const tomorrow = new Date(istTime);
-          tomorrow.setDate(tomorrow.getDate() + 1);
-          setSelectedDate(tomorrow.toISOString().split("T")[0]);
+          setSelectedDate(tomorrowStr);
         }
       }
     };
@@ -234,7 +237,7 @@ export const BookingPanel: React.FC<BookingPanelProps> = ({
         </label>
         <input
           type="date"
-          min={isSameDayAllowed ? todayStr : new Date(Date.now() + 86400000).toISOString().split("T")[0]}
+          min={minDateStr}
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
           className="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm font-semibold text-stone-800 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500"
